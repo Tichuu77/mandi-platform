@@ -5,7 +5,8 @@
   "private": true,
   "workspaces": [
     "services/*",
-    "client/*"
+    "client/*",
+    "shared"
   ],
   "scripts": {
     "install:all": "npm install && npm run install:services && npm run install:client",
