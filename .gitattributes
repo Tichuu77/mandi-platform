@@ -1,0 +1,280 @@
+# .gitattributes for Mandi Platform
+# This file ensures consistent Git behavior across different operating systems
+# and proper language detection on GitHub
+
+# ============================================================================
+# Auto detect text files and perform LF normalization
+# ============================================================================
+* text=auto
+
+# ============================================================================
+# Source Code - Enforce LF line endings
+# ============================================================================
+
+# JavaScript/TypeScript
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.mjs text eol=lf
+*.cjs text eol=lf
+
+# JSON
+*.json text eol=lf
+*.jsonc text eol=lf
+
+# Configuration Files
+*.yml text eol=lf
+*.yaml text eol=lf
+*.toml text eol=lf
+*.ini text eol=lf
+*.cfg text eol=lf
+.env* text eol=lf
+.editorconfig text eol=lf
+.eslintrc text eol=lf
+.prettierrc text eol=lf
+
+# Protocol Buffers
+*.proto text eol=lf linguist-language=Protocol-Buffer
+
+# Shell Scripts
+*.sh text eol=lf
+*.bash text eol=lf
+
+# Docker
+Dockerfile* text eol=lf
+*.dockerignore text eol=lf
+docker-compose*.yml text eol=lf
+docker-compose*.yaml text eol=lf
+
+# ============================================================================
+# Web Files
+# ============================================================================
+
+# HTML
+*.html text eol=lf
+*.htm text eol=lf
+
+# CSS
+*.css text eol=lf
+*.scss text eol=lf
+*.sass text eol=lf
+*.less text eol=lf
+
+# SVG
+*.svg text eol=lf
+
+# XML
+*.xml text eol=lf
+
+# ============================================================================
+# Documentation
+# ============================================================================
+
+# Markdown
+*.md text eol=lf linguist-documentation
+*.markdown text eol=lf linguist-documentation
+README text eol=lf linguist-documentation
+CHANGELOG text eol=lf linguist-documentation
+CONTRIBUTING text eol=lf linguist-documentation
+LICENSE text eol=lf linguist-documentation
+
+# Text Files
+*.txt text eol=lf
+AUTHORS text eol=lf
+INSTALL text eol=lf
+
+# ============================================================================
+# Binary Files - Never modify
+# ============================================================================
+
+# Images
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.bmp binary
+*.tiff binary
+
+
+# Fonts
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary
+
+
+# Archives
+*.zip binary
+*.tar binary
+*.gz binary
+*.bz2 binary
+*.7z binary
+*.rar binary
+
+# Documents
+*.pdf binary
+*.doc binary
+*.docx binary
+*.xls binary
+*.xlsx binary
+*.ppt binary
+*.pptx binary
+
+# Audio/Video
+*.mp3 binary
+*.mp4 binary
+*.wav binary
+*.avi binary
+*.mov binary
+*.webm binary
+
+# Executables
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+
+# Databases
+*.db binary
+*.sqlite binary
+*.sqlite3 binary
+
+# Other Binary
+*.dat binary
+
+# ============================================================================
+# Git Configuration Files
+# ============================================================================
+.gitignore text eol=lf
+.gitattributes text eol=lf
+.gitmodules text eol=lf
+
+package.json text eol=lf
+pnpm-lock.yaml text eol=lf linguist-generated=true
+
+# ============================================================================
+# Language Statistics (GitHub)
+# ============================================================================
+
+# Mark generated files so they don't affect language statistics
+*.min.js linguist-generated=true
+*.min.css linguist-generated=true
+**/dist/** linguist-generated=true
+**/build/** linguist-generated=true
+**/coverage/** linguist-generated=true
+**/__tests__/** linguist-documentation=false
+
+# Mark test files
+**/tests/** linguist-documentation=false
+**/test/** linguist-documentation=false
+**/*.test.js linguist-documentation=false
+**/*.spec.js linguist-documentation=false
+**/*.test.ts linguist-documentation=false
+**/*.spec.ts linguist-documentation=false
+
+# Mark vendor/third-party code
+**/vendor/** linguist-vendored=true
+**/node_modules/** linguist-vendored=true
+**/third_party/** linguist-vendored=true
+
+# Exclude documentation from language stats
+**/docs/** linguist-documentation=true
+
+# ============================================================================
+# Diff Settings
+# ============================================================================
+
+# Better diff for package files
+package.json diff=json
+package-lock.json diff=json
+*.json diff=json
+
+# Better diff for markdown
+*.md diff=markdown
+
+# ============================================================================
+# Merge Settings
+# ============================================================================
+
+# Don't merge package-lock files automatically
+package-lock.json merge=binary
+yarn.lock merge=binary
+pnpm-lock.yaml merge=binary
+
+# ============================================================================
+# Export Ignore (files not included in exports/archives)
+# ============================================================================
+
+# Development files
+.gitignore export-ignore
+.gitattributes export-ignore
+.editorconfig export-ignore
+.eslintrc* export-ignore
+.prettierrc* export-ignore
+.eslintignore export-ignore
+.prettierignore export-ignore
+
+# CI/CD
+.github/ export-ignore
+.gitlab-ci.yml export-ignore
+.travis.yml export-ignore
+azure-pipelines.yml export-ignore
+
+# Test files
+**/__tests__/ export-ignore
+**/tests/ export-ignore
+**/test/ export-ignore
+*.test.js export-ignore
+*.spec.js export-ignore
+*.test.ts export-ignore
+*.spec.ts export-ignore
+jest.config.js export-ignore
+
+# Documentation
+docs/ export-ignore
+*.md export-ignore
+
+# ============================================================================
+# Custom Attributes for Mandi Platform
+# ============================================================================
+
+# gRPC Proto Files - Mark as Protocol Buffer
+shared/proto/*.proto linguist-language=Protocol-Buffer
+
+# Mark shared utilities as vendored if they're third-party
+shared/utils/vendor/** linguist-vendored=true
+
+# Infrastructure files
+infrastructure/** linguist-documentation=true
+
+# Scripts
+scripts/** linguist-documentation=true
+
+# ============================================================================
+# File-Specific Rules
+# ============================================================================
+
+# README files at any level
+**/README.md linguist-documentation
+**/README linguist-documentation
+
+# License files
+LICENSE* linguist-documentation
+COPYING* linguist-documentation
+
+# Changelog
+CHANGELOG* linguist-documentation
+
+# Contributing guides
+CONTRIBUTING* linguist-documentation
+
+# Code of Conduct
+CODE_OF_CONDUCT* linguist-documentationyarn.lock text eol=lf linguist-generated=true
+package-lock.json text eol=lf linguist-generated=true
+# ============================================================================
+# ============================================================================
+# Package Manager Files
+
