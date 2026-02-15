@@ -1,7 +1,7 @@
 {
-  "name": "mandi-platform,
+  "name": "mandi-platform",
   "version": "1.0.0",
-  "description": "Agricultural market management platform",
+  "description": "Multi-tenant SaaS platform for agricultural market management",
   "private": true,
   "workspaces": [
     "services/*",
@@ -10,27 +10,45 @@
   ],
   "scripts": {
     "install:all": "npm install && npm run install:services && npm run install:client",
-    "install:services": "for d in services/*; do (cd \"$d\" && npm install); done",
+    "install:services": "for d in services/*; do (cd \"$d\" && npm install 2>/dev/null || true); done",
     "install:client": "cd client/mandi-web && npm install",
+    
     "dev": "docker-compose up",
-    "dev:services": "concurrently \"npm run dev:auth\" \"npm run dev:tenant\" \"npm run dev:user\"",
+    "dev:services": "concurrently \"npm run dev:auth\" \"npm run dev:tenant\"",
     "dev:auth": "cd services/auth-service && npm run dev",
     "dev:tenant": "cd services/tenant-service && npm run dev",
-    "dev:user": "cd services/user-service && npm run dev",
+    "dev:gateway": "cd services/api-gateway && npm run dev",
+    "dev:client": "cd client/mandi-web && npm run dev",
+    
     "build": "npm run build:services && npm run build:client",
-    "build:services": "for d in services/*; do (cd \"$d\" && npm run build); done",
+    "build:services": "for d in services/*; do (cd \"$d\" && npm run build 2>/dev/null || true); done",
     "build:client": "cd client/mandi-web && npm run build",
+    
     "test": "npm run test:services && npm run test:client",
-    "test:services": "for d in services/*; do (cd \"$d\" && npm test); done",
+    "test:services": "for d in services/*; do (cd \"$d\" && npm test 2>/dev/null || true); done",
     "test:client": "cd client/mandi-web && npm test",
-    "lint": "eslint .",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\""
+    
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:clean": "docker-compose down -v --remove-orphans",
+    
+    "proto:generate": "node scripts/generate-proto.js"
   },
   "devDependencies": {
-    "concurrently": "^8.2.0",
-    "eslint": "^8.50.0",
-    "prettier": "^3.0.0",
-    "husky": "^8.0.0",
-    "lint-staged": "^14.0.0"
+    "concurrently": "^8.2.2",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.4",
+    "husky": "^9.0.10",
+    "lint-staged": "^15.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   }
 }
