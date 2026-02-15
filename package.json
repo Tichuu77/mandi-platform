@@ -1,0 +1,35 @@
+{
+  "name": "mandi-platform,
+  "version": "1.0.0",
+  "description": "Agricultural market management platform",
+  "private": true,
+  "workspaces": [
+    "services/*",
+    "client/*"
+  ],
+  "scripts": {
+    "install:all": "npm install && npm run install:services && npm run install:client",
+    "install:services": "for d in services/*; do (cd \"$d\" && npm install); done",
+    "install:client": "cd client/mandi-web && npm install",
+    "dev": "docker-compose up",
+    "dev:services": "concurrently \"npm run dev:auth\" \"npm run dev:tenant\" \"npm run dev:user\"",
+    "dev:auth": "cd services/auth-service && npm run dev",
+    "dev:tenant": "cd services/tenant-service && npm run dev",
+    "dev:user": "cd services/user-service && npm run dev",
+    "build": "npm run build:services && npm run build:client",
+    "build:services": "for d in services/*; do (cd \"$d\" && npm run build); done",
+    "build:client": "cd client/mandi-web && npm run build",
+    "test": "npm run test:services && npm run test:client",
+    "test:services": "for d in services/*; do (cd \"$d\" && npm test); done",
+    "test:client": "cd client/mandi-web && npm test",
+    "lint": "eslint .",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "eslint": "^8.50.0",
+    "prettier": "^3.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^14.0.0"
+  }
+}
