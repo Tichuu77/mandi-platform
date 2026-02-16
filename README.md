@@ -47,13 +47,17 @@ npm run dev:client    # Frontend
 ```
 
 ## 📁 Project Structure
-mandi-platform/
-├── services/          # Backend microservices
-├── client/           # Frontend React app
-├── shared/           # Shared code (proto, utils)
-├── infrastructure/   # Docker, K8s configs
-├── scripts/          # Build scripts
-└── docs/            # Documentation
+
+```bash
+mandi-platform
+│
+├── services/          # Microservices (Auth, Mandi, Ledger, etc.)
+├── client/            # React frontend application
+├── shared/            # Shared libraries (proto files, utilities)
+├── infrastructure/    # Docker, Kubernetes, CI/CD configs
+├── scripts/           # Automation & build scripts
+└── docs/              # Technical documentation
+```
 
 ## 🛠️ Technology Stack
 
