@@ -73,3 +73,6 @@ dump.rdb
 
 # PM2
 .pm2
+
+#generated proto 
+generated/
