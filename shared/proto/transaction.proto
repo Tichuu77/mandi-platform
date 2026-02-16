@@ -1,0 +1,124 @@
+syntax = "proto3";
+
+package mandi.transaction;
+
+import "common.proto";
+
+service TransactionService {
+  rpc CreateChallan(CreateChallanRequest) returns (CreateChallanResponse);
+  rpc GetChallan(GetChallanRequest) returns (GetChallanResponse);
+  rpc ListChallans(ListChallansRequest) returns (ListChallansResponse);
+  rpc RecordGoodsArrival(GoodsArrivalRequest) returns (GoodsArrivalResponse);
+  rpc CreateVoucher(CreateVoucherRequest) returns (CreateVoucherResponse);
+}
+
+message CreateChallanRequest {
+  string tenant_id = 1;
+  string challan_type = 2; // buyer, grower, both
+  string buyer_id = 3;
+  string grower_id = 4;
+  repeated ChallanItem items = 5;
+  repeated Expense expenses = 6;
+}
+
+message ChallanItem {
+  string item_id = 1;
+  string quality = 2;
+  string size = 3;
+  int32 quantity = 4;
+  double rate = 5;
+  double amount = 6;
+  string lot_number = 7;
+}
+
+message Expense {
+  string expense_type = 1;
+  double amount = 2;
+}
+
+message CreateChallanResponse {
+  bool success = 1;
+  string message = 2;
+  string challan_id = 3;
+  string challan_no = 4;
+}
+
+message GetChallanRequest {
+  string tenant_id = 1;
+  string challan_id = 2;
+}
+
+message GetChallanResponse {
+  bool success = 1;
+  Challan challan = 2;
+}
+
+message Challan {
+  string id = 1;
+  string tenant_id = 2;
+  string challan_no = 3;
+  string challan_date = 4;
+  string buyer_id = 5;
+  string grower_id = 6;
+  repeated ChallanItem items = 7;
+  double gross_amount = 8;
+  double apmc_charges = 9;
+  double discount = 10;
+  double net_amount = 11;
+  string payment_status = 12;
+  double paid_amount = 13;
+  string status = 14;
+}
+
+message ListChallansRequest {
+  string tenant_id = 1;
+  common.PaginationRequest pagination = 2;
+  string buyer_id = 3;
+  string start_date = 4;
+  string end_date = 5;
+}
+
+message ListChallansResponse {
+  bool success = 1;
+  repeated Challan challans = 2;
+  common.PaginationMeta meta = 3;
+}
+
+message GoodsArrivalRequest {
+  string tenant_id = 1;
+  string grower_id = 2;
+  string truck_number = 3;
+  string gr_number = 4;
+  repeated ArrivalItem items = 5;
+}
+
+message ArrivalItem {
+  string item_id = 1;
+  int32 quantity = 2;
+  string lot_number = 3;
+  string store_id = 4;
+}
+
+message GoodsArrivalResponse {
+  bool success = 1;
+  string message = 2;
+  string arrival_id = 3;
+}
+
+message CreateVoucherRequest {
+  string tenant_id = 1;
+  string voucher_type = 2; // payment, receipt, journal, contra
+  string debit_account = 3;
+  string credit_account = 4;
+  double amount = 5;
+  string payment_mode = 6;
+  string reference_no = 7;
+  string narration = 8;
+}
+
+message CreateVoucherResponse {
+  bool success = 1;
+  string message = 2;
+  string voucher_id = 3;
+  string voucher_no = 4;
+}

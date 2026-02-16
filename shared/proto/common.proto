@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package mandi.common;
+
+// Common timestamp message
+message Timestamp {
+  int64 seconds = 1;
+  int32 nanos = 2;
+}
+
+// Pagination request
+message PaginationRequest {
+  int32 page = 1;      // Default: 1
+  int32 limit = 2;     // Default: 20
+  string sort_by = 3;  // Field to sort by
+  string order = 4;    // asc or desc
+}
+
+// Pagination response
+message PaginationMeta {
+  int32 total = 1;
+  int32 page = 2;
+  int32 limit = 3;
+  int32 pages = 4;
+}
+
+// Standard response wrapper
+message Response {
+  bool success = 1;
+  string message = 2;
+  string error = 3;
+}
+
+// Address
+message Address {
+  string street = 1;
+  string city = 2;
+  string state = 3;
+  string country = 4;
+  string pincode = 5;
+}
+
+// Money/Currency
+message Money {
+  int32 amount = 1;
+  string currency = 2; // Default: INR
+}
+
+// Status enum
+enum Status {
+  ACTIVE = 0;
+  INACTIVE = 1;
+  SUSPENDED = 2;
+  DELETED = 3;
+}
