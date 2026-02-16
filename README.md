@@ -13,7 +13,7 @@
 
 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/mandi-platform.git
+git clone https://github.com/Tichuu77/mandi-platform.git
 cd mandi-platform
 ```
 
