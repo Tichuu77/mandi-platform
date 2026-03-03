@@ -20,15 +20,15 @@ message RegisterRequest {
   string email = 2;
   string password = 3;
   string phone = 4;
-  string mandi_name = 5;
-  string gst_number = 6;
+  string mandiName = 5;
+  string gstNumber = 6;
   common.Address address = 7;
 }
 
 message RegisterResponse {
   bool success = 1;
   string message = 2;
-  string user_id = 3;
+  string userId = 3;
 }
 
 // Login
@@ -40,8 +40,8 @@ message LoginRequest {
 message LoginResponse {
   bool success = 1;
   string message = 2;
-  string access_token = 3;
-  string refresh_token = 4;
+  string accessToken = 3;
+  string refreshToken = 4;
   User user = 5;
 }
 
@@ -50,7 +50,7 @@ message User {
   string name = 2;
   string email = 3;
   string role = 4;
-  string tenant_id = 5;
+  string tenantId = 5;
 }
 
 // Verify Token
@@ -65,18 +65,18 @@ message VerifyTokenResponse {
 
 // Refresh Token
 message RefreshTokenRequest {
-  string refresh_token = 1;
+  string refreshToken = 1;
 }
 
 message RefreshTokenResponse {
   bool success = 1;
-  string access_token = 2;
-  string refresh_token = 3;
+  string accessToken = 2;
+  string refreshToken = 3;
 }
 
 // Logout
 message LogoutRequest {
-  string user_id = 1;
+  string userId = 1;
   string token = 2;
 }
 
@@ -87,9 +87,9 @@ message LogoutResponse {
 
 // Change Password
 message ChangePasswordRequest {
-  string user_id = 1;
-  string old_password = 2;
-  string new_password = 3;
+  string userId = 1;
+  string oldPassword = 2;
+  string newPassword = 3;
 }
 
 message ChangePasswordResponse {

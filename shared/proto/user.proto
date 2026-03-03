@@ -14,7 +14,7 @@ service UserService {
 }
 
 message CreateUserRequest {
-  string tenant_id = 1;
+  string tenantId = 1;
   string name = 2;
   string email = 3;
   string password = 4;
@@ -25,12 +25,12 @@ message CreateUserRequest {
 message CreateUserResponse {
   bool success = 1;
   string message = 2;
-  string user_id = 3;
+  string userId = 3;
 }
 
 message GetUserRequest {
-  string user_id = 1;
-  string tenant_id = 2;
+  string userId = 1;
+  string tenantId = 2;
 }
 
 message GetUserResponse {
@@ -40,20 +40,20 @@ message GetUserResponse {
 
 message User {
   string id = 1;
-  string tenant_id = 2;
+  string tenantId = 2;
   string name = 3;
   string email = 4;
   string phone = 5;
   string role = 6;
   repeated string permissions = 7;
   string status = 8;
-  common.Timestamp created_at = 9;
-  common.Timestamp last_login = 10;
+  common.Timestamp createdAt = 9;
+  common.Timestamp lastLogin = 10;
 }
 
 message UpdateUserRequest {
-  string user_id = 1;
-  string tenant_id = 2;
+  string userId = 1;
+  string tenantId = 2;
   string name = 3;
   string phone = 4;
   string role = 5;
@@ -65,8 +65,8 @@ message UpdateUserResponse {
 }
 
 message DeleteUserRequest {
-  string user_id = 1;
-  string tenant_id = 2;
+  string userId = 1;
+  string tenantId = 2;
 }
 
 message DeleteUserResponse {
@@ -75,7 +75,7 @@ message DeleteUserResponse {
 }
 
 message ListUsersRequest {
-  string tenant_id = 1;
+  string tenantId = 1;
   common.PaginationRequest pagination = 2;
   string role = 3; // Filter by role
 }
@@ -87,8 +87,8 @@ message ListUsersResponse {
 }
 
 message AssignRoleRequest {
-  string user_id = 1;
-  string tenant_id = 2;
+  string userId = 1;
+  string tenantId = 2;
   string role = 3;
 }
 
