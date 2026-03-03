@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   # MongoDB Database
@@ -119,6 +119,23 @@ services:
     networks:
       - mandi-network
 
+  # Auth Service
+  auth-service:
+    build:
+      context: .
+      dockerfile: services/auth-service/Dockerfile
+    container_name: mandi-auth-service
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+      - redis
+      - kafka
+    env_file:
+      - ./services/auth-service/.env
+    ports:
+      - "50051:50051"
+    networks:
+      - mandi-network
 volumes:
   mongodb_data:
     driver: local
