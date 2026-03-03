@@ -14,22 +14,22 @@ service TenantService {
 }
 
 message CreateTenantRequest {
-  string mandi_name = 1;
-  string owner_name = 2;
+  string mandiName = 1;
+  string ownerName = 2;
   string email = 3;
   string phone = 4;
-  string gst_number = 5;
+  string gstNumber = 5;
   common.Address address = 6;
 }
 
 message CreateTenantResponse {
   bool success = 1;
   string message = 2;
-  string tenant_id = 3;
+  string tenantId = 3;
 }
 
 message GetTenantRequest {
-  string tenant_id = 1;
+  string tenantId = 1;
 }
 
 message GetTenantResponse {
@@ -39,21 +39,21 @@ message GetTenantResponse {
 
 message Tenant {
   string id = 1;
-  string mandi_name = 2;
-  string owner_name = 3;
+  string mandiName = 2;
+  string ownerName = 3;
   string email = 4;
   string phone = 5;
-  string gst_number = 6;
+  string gstNumber = 6;
   common.Address address = 7;
   string status = 8;
-  string subscription_id = 9;
-  common.Timestamp created_at = 10;
-  common.Timestamp updated_at = 11;
+  string subscriptionId = 9;
+  common.Timestamp createdAt = 10;
+  common.Timestamp updatedAt = 11;
 }
 
 message UpdateTenantRequest {
-  string tenant_id = 1;
-  string mandi_name = 2;
+  string tenantId = 1;
+  string mandiName = 2;
   string phone = 3;
   common.Address address = 4;
 }
@@ -75,7 +75,7 @@ message ListTenantsResponse {
 }
 
 message ActivateTenantRequest {
-  string tenant_id = 1;
+  string tenantId = 1;
 }
 
 message ActivateTenantResponse {
@@ -84,7 +84,7 @@ message ActivateTenantResponse {
 }
 
 message SuspendTenantRequest {
-  string tenant_id = 1;
+  string tenantId = 1;
   string reason = 2;
 }
 
