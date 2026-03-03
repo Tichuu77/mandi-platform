@@ -13,39 +13,39 @@ service TransactionService {
 }
 
 message CreateChallanRequest {
-  string tenant_id = 1;
-  string challan_type = 2; // buyer, grower, both
-  string buyer_id = 3;
-  string grower_id = 4;
+  string tenantId = 1;
+  string challanType = 2; // buyer, grower, both
+  string buyerId = 3;
+  string growerId = 4;
   repeated ChallanItem items = 5;
   repeated Expense expenses = 6;
 }
 
 message ChallanItem {
-  string item_id = 1;
+  string itemId = 1;
   string quality = 2;
   string size = 3;
   int32 quantity = 4;
   double rate = 5;
   double amount = 6;
-  string lot_number = 7;
+  string lotNumber = 7;
 }
 
 message Expense {
-  string expense_type = 1;
+  string expenseType = 1;
   double amount = 2;
 }
 
 message CreateChallanResponse {
   bool success = 1;
   string message = 2;
-  string challan_id = 3;
-  string challan_no = 4;
+  string challanId = 3;
+  string challanNo = 4;
 }
 
 message GetChallanRequest {
-  string tenant_id = 1;
-  string challan_id = 2;
+  string tenantId = 1;
+  string challanId = 2;
 }
 
 message GetChallanResponse {
@@ -55,27 +55,27 @@ message GetChallanResponse {
 
 message Challan {
   string id = 1;
-  string tenant_id = 2;
-  string challan_no = 3;
-  string challan_date = 4;
-  string buyer_id = 5;
-  string grower_id = 6;
+  string tenantId = 2;
+  string challanNo = 3;
+  string challanDate = 4;
+  string buyerId = 5;
+  string growerId = 6;
   repeated ChallanItem items = 7;
-  double gross_amount = 8;
-  double apmc_charges = 9;
+  double grossAmount = 8;
+  double apmcCharges = 9;
   double discount = 10;
-  double net_amount = 11;
-  string payment_status = 12;
-  double paid_amount = 13;
+  double netAmount = 11;
+  string paymentStatus = 12;
+  double paidAmount = 13;
   string status = 14;
 }
 
 message ListChallansRequest {
-  string tenant_id = 1;
+  string tenantId = 1;
   common.PaginationRequest pagination = 2;
-  string buyer_id = 3;
-  string start_date = 4;
-  string end_date = 5;
+  string buyerId = 3;
+  string startDate = 4;
+  string endDate = 5;
 }
 
 message ListChallansResponse {
@@ -85,40 +85,40 @@ message ListChallansResponse {
 }
 
 message GoodsArrivalRequest {
-  string tenant_id = 1;
-  string grower_id = 2;
-  string truck_number = 3;
-  string gr_number = 4;
+  string tenantId = 1;
+  string growerId = 2;
+  string truckNumber = 3;
+  string grNumber = 4;
   repeated ArrivalItem items = 5;
 }
 
 message ArrivalItem {
-  string item_id = 1;
+  string itemId = 1;
   int32 quantity = 2;
-  string lot_number = 3;
-  string store_id = 4;
+  string lotNumber = 3;
+  string storeId = 4;
 }
 
 message GoodsArrivalResponse {
   bool success = 1;
   string message = 2;
-  string arrival_id = 3;
+  string arrivalId = 3;
 }
 
 message CreateVoucherRequest {
-  string tenant_id = 1;
-  string voucher_type = 2; // payment, receipt, journal, contra
-  string debit_account = 3;
-  string credit_account = 4;
+  string tenantId = 1;
+  string voucherType = 2; // payment, receipt, journal, contra
+  string debitAccount = 3;
+  string creditAccount = 4;
   double amount = 5;
-  string payment_mode = 6;
-  string reference_no = 7;
+  string paymentMode = 6;
+  string referenceNo = 7;
   string narration = 8;
 }
 
 message CreateVoucherResponse {
   bool success = 1;
   string message = 2;
-  string voucher_id = 3;
-  string voucher_no = 4;
+  string voucherId = 3;
+  string voucherNo = 4;
 }
